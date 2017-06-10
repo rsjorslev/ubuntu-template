@@ -4,8 +4,8 @@
         "cpus": "1",
         "disk": "30720",
         "network": "VM Network",
-        "ssh_name": "def-user",
-        "ssh_pass": "password",
+        "ssh_name": "defuser",
+        "ssh_pass": "Q1w2e3r4!",
         "esxi_user": "{{env `ESXI_CREDS_USR`}}",
         "esxi_pass": "{{env `ESXI_CREDS_PSW`}}",
         "esxi_host": "{{env `ESXI_HOST`}}"
@@ -27,8 +27,8 @@
         "iso_url": "/var/lib/jenkins/workspace/slev_packer-pipeline_master-NFTBG6ALIRZNEHMTA7HUYDLUUPOASZ3CL3ZN2PEP3KWSPQ647VKA/packer_cache/dd3439e4d4579146341017db9ab41b40740e737bc16e9e9b7380f003e97903af.iso",
         "iso_checksum": "2bce60d18248df9980612619ff0b34e6",
         "iso_checksum_type": "md5",
-        "ssh_username": "def-user",
-        "ssh_password": "password",
+        "ssh_username": "{{user `ssh_name`}}",
+        "ssh_password": "{{user `ssh_pass`}}",
         "shutdown_command": "sudo systemctl poweroff",
         "guest_os_type": "Ubuntu-64",
         "disk_size" : "{{user `disk`}}",
@@ -73,12 +73,12 @@
     "provisioners": [
     {
       "type": "shell",
-      "execute_command": "echo 'def-user' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+      "execute_command": "echo 'defuser' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
       "script": "scripts/ansible.sh"
     },
     {
       "type": "shell",
-      "execute_command": "echo 'def-user' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+      "execute_command": "echo 'defuser' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
       "script": "scripts/setup.sh"
     },
     {
@@ -88,7 +88,7 @@
     },
     {
       "type": "shell",
-      "execute_command": "echo 'def-user' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+      "execute_command": "echo 'defuser' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
       "script": "scripts/cleanup.sh"
     }
   ]
