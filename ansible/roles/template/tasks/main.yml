@@ -1,0 +1,19 @@
+---
+  - name: Add Cockpit repository
+    apt_repository:
+      repo: "{{ cockpit_repo }}"
+      state: present
+
+  - name: Install common software requirements
+    apt: pkg={{ item }} state=installed
+    with_items:
+       - git
+       - wget
+       - curl
+       - cockpit
+       - apt-transport-https
+       - ca-certificates
+       - software-properties-common
+       - python-pip
+       - open-vm-tools
+...

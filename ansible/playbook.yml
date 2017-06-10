@@ -1,0 +1,8 @@
+---
+- name: Template Creation
+  hosts: localhost
+  become: yes
+  gather_facts: yes
+  roles:
+    - template
+...
