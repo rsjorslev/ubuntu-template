@@ -3,6 +3,7 @@
         "memory": "1024",
         "cpus": "1",
         "disk": "30720",
+        "vm_name": "ubu1604tmpl-{{timestamp}}",
         "network": "VM Network",
         "ssh_name": "runner",
         "ssh_pass": "runner",
@@ -12,6 +13,8 @@
     },
     "builders": [{
         "type": "vmware-iso",
+        "output_directory": "{{user `vm_name`}}",
+        "vm_name": "{{user `vm_name`}}",
         "keep_registered": true,
         "vnc_disable_password": true,
         "vnc_port_min": "5900",
