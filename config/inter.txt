@@ -1,0 +1,1 @@
+ifconfig -a | grep ^eth| sed "s/ .*//" | while read iface; do grep -q "^iface $iface" /etc/network/interfaces || (echo -e "auto $iface\niface $iface inet dhcp\n" >> /etc/network/interfaces; ifup $iface); done
