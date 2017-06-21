@@ -35,15 +35,16 @@
         "shutdown_command": "sudo systemctl poweroff",
         "guest_os_type": "Ubuntu-64",
         "disk_size" : "{{user `disk`}}",
+        "disk_type_id": "thin",
         "http_directory" : "http",
         "http_port_min" : 9010,
         "http_port_max" : 9020,
         "ssh_wait_timeout": "60m",
-        "shutdown_command": "echo {{user `ssh_pass`}} | sudo -S shutdown -P now",
         "vmx_data": {
           "memsize": "{{user `memory`}}",
           "numvcpus": "{{user `cpus`}}",
-          "ethernet0.networkName": "{{user `network`}}"
+          "ethernet0.dvs.portgroupid": "dvportgroup-335",
+          "ethernet0.dvs.switchid": "7c 46 2f 50 52 21 6e cd-26 39 8b e7 dd 52 a0 25"
         },
         "boot_wait": "15s",
         "boot_command": [
@@ -88,12 +89,6 @@
       "type": "ansible-local",
       "playbook_file": "ansible/playbook.yml",
       "playbook_dir": "ansible"
-    },
-    {
-      "type": "shell",
-      "execute_command": "echo 'runner' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
-      "script": "scripts/cleanup.sh"
     }
   ]
-    }]
 }

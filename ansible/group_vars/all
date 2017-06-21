@@ -1,9 +1,12 @@
 ---
-
 ####################################################
 # Template
 ####################################################
 
 cockpit_repo: "ppa:cockpit-project/cockpit"
+audit_logs:
+  - "/var/log/auth.log"
+  - "/var/log/wtmp"
+  - "/var/log/lastlog"
 
 ...

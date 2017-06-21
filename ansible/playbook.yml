@@ -5,4 +5,5 @@
   gather_facts: yes
   roles:
     - template
+    - cleanup
 ...
