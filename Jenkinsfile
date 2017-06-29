@@ -19,7 +19,7 @@ pipeline {
     }
   }
   environment {
-    PACKER = tool('packer100')
+    PACKER = tool('packer_v102')
     ESXI_CREDS = credentials('esx-tstdmn')
     ESXI_HOST = 'esx01.tstdmn.dk'
     DVPORTGROUP_ID = 'dvportgroup-335'
