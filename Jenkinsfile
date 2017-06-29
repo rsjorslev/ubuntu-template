@@ -4,6 +4,7 @@ pipeline {
     stage('Pre-Start') {
       steps {
         sh 'printenv'
+        sh '${PACKER}/packer -v'
       }
     }
     stage('Validate') {
