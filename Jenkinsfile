@@ -21,7 +21,7 @@ pipeline {
   environment {
     PACKER = tool('packer_v102')
     ESXI_CREDS = credentials('esx-tstdmn')
-    ESXI_HOST = 'esx01.tstdmn.dk'
+    ESXI_HOST = 'esx06.tstdmn.dk'
     DVPORTGROUP_ID = 'dvportgroup-335'
     SWITCH_ID = '7c 46 2f 50 52 21 6e cd-26 39 8b e7 dd 52 a0 25'
     DATASTORE = 'vsphere01'
