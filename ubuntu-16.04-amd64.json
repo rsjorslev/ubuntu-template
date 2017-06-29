@@ -9,7 +9,12 @@
         "ssh_pass": "runner",
         "esxi_user": "{{env `ESXI_CREDS_USR`}}",
         "esxi_pass": "{{env `ESXI_CREDS_PSW`}}",
-        "esxi_host": "{{env `ESXI_HOST`}}"
+        "esxi_host": "{{env `ESXI_HOST`}}",
+        "dvportgroupid": "{{env `DVPORTGROUP_ID`}}",
+        "switchid": "{{env `SWITCH_ID`}}",
+        "datastore": "{{env `DATASTORE`}}",
+        "iso_url": "/jenkins/iso/ubuntu-16.04.2-server-amd64.iso",
+        "iso_md5": "2bce60d18248df9980612619ff0b34e6"
     },
     "builders": [{
         "type": "vmware-iso",
@@ -24,14 +29,14 @@
         "remote_host": "{{user `esxi_host`}}",
         "remote_username": "{{user `esxi_user`}}",
         "remote_password": "{{user `esxi_pass`}}",
-        "remote_datastore": "datastore",
-        "remote_cache_datastore": "datastore",
-        "remote_cache_directory": "packer",
-        "iso_url": "/var/lib/jenkins/workspace/slev_packer-pipeline_master-NFTBG6ALIRZNEHMTA7HUYDLUUPOASZ3CL3ZN2PEP3KWSPQ647VKA/packer_cache/dd3439e4d4579146341017db9ab41b40740e737bc16e9e9b7380f003e97903af.iso",
-        "iso_checksum": "2bce60d18248df9980612619ff0b34e6",
+        "remote_datastore": "{{user `datastore`}}",
+        "remote_cache_datastore": "{{user `datastore`}}",
+        "remote_cache_directory": "packer-cache",
+        "iso_url": "{{user `iso_url`}}",
+        "iso_checksum": "{{user `iso_md5`}}",
         "iso_checksum_type": "md5",
-        "ssh_username": "runner",
-        "ssh_password": "runner",
+        "ssh_username": "{{user `ssh_name`}}",
+        "ssh_password": "{{user `ssh_pass`}}",
         "shutdown_command": "sudo systemctl poweroff",
         "guest_os_type": "Ubuntu-64",
         "disk_size" : "{{user `disk`}}",
@@ -43,8 +48,8 @@
         "vmx_data": {
           "memsize": "{{user `memory`}}",
           "numvcpus": "{{user `cpus`}}",
-          "ethernet0.dvs.portgroupid": "dvportgroup-335",
-          "ethernet0.dvs.switchid": "7c 46 2f 50 52 21 6e cd-26 39 8b e7 dd 52 a0 25"
+          "ethernet0.dvs.portgroupid": "{{user `dvportgroupid`}}",
+          "ethernet0.dvs.switchid": "{{user `switchid`}}"
         },
         "boot_wait": "15s",
         "boot_command": [
