@@ -10,8 +10,8 @@
         "esxi_user": "{{env `ESXI_USER`}}",
         "esxi_pass": "{{env `ESXI_PASS`}}",
         "esxi_host": "{{env `ESXI_HOST`}}",
-        "dvportgroupid": "50 18 a9 9e 92 d0 de cd-1a 88 ce bc 53 3c 03 d1",
-        "switchid": "dvportgroup-73",
+        "dvportgroupid": "dvportgroup-67",
+        "switchid": "50 18 a9 9e 92 d0 de cd-1a 88 ce bc 53 3c 03 d1",
         "datastore": "{{env `DATASTORE`}}",
         "iso_url": "{{env `ISO_URL`}}",
         "iso_md5": "2bce60d18248df9980612619ff0b34e6"
