@@ -1,4 +1,4 @@
-# Packer - Ubuntu 16.04 template creation for vSphere 6.x
+# Packer - Ubuntu 16.04 template creation for vSphere 6.5
 
 This is a sample on how to use Packer 1.0.0 to build Ubuntu 16.04-amd64 VMs for use as templates in a VMware vSphere environments.
 
