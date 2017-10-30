@@ -7,6 +7,7 @@
         "network": "VM Network",
         "ssh_name": "runner",
         "ssh_pass": "runner",
+        "vc_pass": "{{env `VC_PASS`}}",
         "esxi_user": "{{env `ESXI_USER`}}",
         "esxi_pass": "{{env `ESXI_PASS`}}",
         "esxi_host": "{{env `ESXI_HOST`}}",
@@ -143,21 +144,28 @@
             "<enter><wait>"
         ]
       }],
-    "provisioners": [
-    {
-      "type": "shell",
-      "execute_command": "echo 'runner' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
-      "script": "scripts/ansible.sh"
-    },
-    {
-      "type": "shell",
-      "execute_command": "echo 'runner' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
-      "script": "scripts/setup.sh"
-    },
-    {
-      "type": "ansible-local",
-      "playbook_file": "ansible/playbook.yml",
-      "playbook_dir": "ansible"
-    }
-  ]
+    "provisioners": [{
+        "type": "shell",
+        "execute_command": "echo 'runner' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+        "script": "scripts/ansible.sh"
+      },
+      {
+        "type": "shell",
+        "execute_command": "echo 'runner' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+        "script": "scripts/setup.sh"
+      },
+      {
+        "type": "ansible-local",
+        "playbook_file": "ansible/playbook.yml",
+        "playbook_dir": "ansible"
+      }],
+    "post-processors": [{
+      "type": "vsphere-template",
+      "host": "vcsa01.tstdmn.dk",
+      "insecure": true,
+      "username": "administrator@vsphere.local",
+      "password": "{{user `vc_pass`}}",
+      "datacenter": "Datacenter",
+      "folder": "/Templates"
+    }]
 }
