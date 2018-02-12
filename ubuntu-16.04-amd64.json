@@ -1,21 +1,21 @@
 {
     "variables": {
-        "memory": "1024",
-        "cpus": "1",
-        "disk": "30720",
-        "vm_name": "ubu1604tmpl-{{timestamp}}",
+        "memory": "2048",
+        "cpus": "2",
+        "disk": "81920",
+        "vm_name": "T-UBU1604-{{isotime \"20060201-150405\"}}",
         "network": "VM Network",
-        "ssh_name": "runner",
-        "ssh_pass": "runner",
-        "vc_pass": "{{env `VC_PASS`}}",
-        "esxi_user": "{{env `ESXI_USER`}}",
-        "esxi_pass": "{{env `ESXI_PASS`}}",
+        "ssh_name": "ubuntu",
+        "ssh_pass": "ubuntu",
+        "vc_pass": "{{env `ESXI_CREDS_PSW`}}",
+        "esxi_user": "{{env `ESXI_CREDS_USR`}}",
+        "esxi_pass": "{{env `ESXI_CREDS_PSW`}}",
         "esxi_host": "{{env `ESXI_HOST`}}",
         "dvportgroupid": "dvportgroup-234",
         "switchid": "50 18 a9 9e 92 d0 de cd-1a 88 ce bc 53 3c 03 d1",
         "datastore": "{{env `DATASTORE`}}",
-        "iso_url": "{{env `ISO_URL`}}",
-        "iso_md5": "2bce60d18248df9980612619ff0b34e6"
+        "iso_url": "http://35.187.165.225/ubuntu-16.04.3-server-amd64.iso",
+        "iso_md5": "10fcd20619dce11fe094e960c85ba4a9"
     },
     "builders": [{
         "name": "vsphere",
@@ -72,7 +72,7 @@
             " keyboard-configuration/variant=USA<wait>",
             " locale=en_US<wait>",
             " netcfg/get_domain=vm<wait>",
-            " netcfg/get_hostname=runner<wait>",
+            " netcfg/get_hostname=ubuntu<wait>",
             " grub-installer/bootdev=/dev/sda<wait>",
             " noapic<wait>",
             " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg",
@@ -136,7 +136,7 @@
             " keyboard-configuration/variant=USA<wait>",
             " locale=en_US<wait>",
             " netcfg/get_domain=vm<wait>",
-            " netcfg/get_hostname=runner<wait>",
+            " netcfg/get_hostname=ubuntu<wait>",
             " grub-installer/bootdev=/dev/sda<wait>",
             " noapic<wait>",
             " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg",
@@ -146,12 +146,12 @@
       }],
     "provisioners": [{
         "type": "shell",
-        "execute_command": "echo 'runner' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+        "execute_command": "echo 'ubuntu' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
         "script": "scripts/ansible.sh"
       },
       {
         "type": "shell",
-        "execute_command": "echo 'runner' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+        "execute_command": "echo 'ubuntu' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
         "script": "scripts/setup.sh"
       },
       {

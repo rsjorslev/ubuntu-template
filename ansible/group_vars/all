@@ -9,4 +9,6 @@ audit_logs:
   - "/var/log/wtmp"
   - "/var/log/lastlog"
 
+ansible_user_keys:
+  - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDVG2DPcDLiXy/R4f6aj0LLWpmCuDUnib+5lQhcl76ogTw666iNhODhHiiX8IPF3EtGxQ1RHAN59M8viJeirtP4iwmvqdbXktPjgqguauhOj8Yk6VBjWEiBucAXKqLGCyDngMTk8vRAcuHwlMr7VuIhqO1UPYov0tsL5kEuE7TU5/dkpcS1vbvtKOuBqZOPi2fH3nwxqvyilnpSyU/bZabNVBDGxhF6y25vH+kgFYM5O1RCGyx0UKzojVM65P/o/+nlOc5N/4tGpEt2BxU89Qidul5hugyk7LdM12ywGAPEsEpLALCjDKnbZANHpzXMUAzIb30jTJpXJ4yqiBl9vrUf rs@hive01"
 ...
