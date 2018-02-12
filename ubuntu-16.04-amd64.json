@@ -4,7 +4,7 @@
         "cpus": "2",
         "disk": "81920",
         "vm_name": "T-UBU1604-{{isotime \"20060201-150405\"}}",
-        "network": "VM Network",
+        "network": "L001-Packer",
         "ssh_name": "ubuntu",
         "ssh_pass": "ubuntu",
         "vc_pass": "{{env `ESXI_CREDS_PSW`}}",

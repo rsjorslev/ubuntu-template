@@ -14,7 +14,7 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh '${PACKER}/packer build ubuntu-16.04-amd64.json'
+        sh '${PACKER}/packer build -only=vsphere ubuntu-16.04-amd64.json'
       }
     }
   }
